@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { polyfill } from 'react-lifecycles-compat';
 import Portal from 'react-minimalist-portal';
-import CSSTransition from 'react-transition-group/CSSTransition';
 import cx from 'classnames';
 import noScroll from 'no-scroll';
 import FocusTrap from 'focus-trap-react';
@@ -159,24 +158,6 @@ class Modal extends Component {
 
     return (
       <Portal container={container}>
-        <CSSTransition
-          in={open}
-          appear
-          classNames={{
-            appear: classNames.transitionEnter || classes.transitionEnter,
-            appearActive:
-              classNames.transitionEnterActive || classes.transitionEnterActive,
-            enter: classNames.transitionEnter || classes.transitionEnter,
-            enterActive:
-              classNames.transitionEnterActive || classes.transitionEnterActive,
-            exit: classNames.transitionExit || classes.transitionExit,
-            exitActive:
-              classNames.transitionExitActive || classes.transitionExitActive,
-          }}
-          timeout={animationDuration}
-          onEntered={this.handleEntered}
-          onExited={this.handleExited}
-        >
           <div
             className={cx(
               classes.overlay,
@@ -235,7 +216,6 @@ class Modal extends Component {
               </div>
             )}
           </div>
-        </CSSTransition>
       </Portal>
     );
   }
